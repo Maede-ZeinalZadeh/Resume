@@ -169,7 +169,7 @@
             font-size: 1.2rem;
         }
         
-        /* بخش نمونه کارها - تغییرات اصلی اینجاست */
+        /* بخش نمونه کارها */
         .portfolio-section {
             padding: 40px;
             background-color: #1a1a1a;
@@ -216,45 +216,50 @@
             font-size: 1.3rem;
         }
         
-        /* گالری متراکم برای عکس‌ها - تغییرات اصلی اینجاست */
+        /* گالری متراکم بدون فاصله - نسخه بهبود یافته */
         .dense-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            grid-gap: 8px; /* فاصله کم بین عکس‌ها */
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            grid-gap: 1px; /* فقط 1 پیکسل برای جداسازی */
             grid-auto-flow: dense;
         }
         
         .portfolio-item {
             position: relative;
-            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             border: 1px solid #333;
+            background-color: #2a2a2a; /* پس زمینه برای فضاهای خالی */
         }
-
-        .portfolio-item {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    height: 200px; /* ارتفاع ثابت برای همه */
-    border: 1px solid #333;
-}
-
-/* ارتفاع‌های مختلف برای آیتم‌های مختلف */
-.portfolio-item.vertical {
-    height: 300px; /* برای عکس‌های عمودی/کشیده */
-}
-
-.portfolio-item.horizontal {
-    height: 180px; /* برای عکس‌های افقی */
-}
-
-.portfolio-item.square {
-    height: 200px; /* برای عکس‌های مربعی */
-}
+        
+        /* ابعاد مختلف */
+        .portfolio-item.small {
+            height: 160px;
+        }
+        
+        .portfolio-item.medium {
+            height: 200px;
+        }
+        
+        .portfolio-item.large {
+            height: 250px;
+        }
+        
+        .portfolio-item.xlarge {
+            height: 300px;
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        
+        .portfolio-item.wide {
+            grid-column: span 2;
+            height: 180px;
+        }
+        
+        .portfolio-item.tall {
+            grid-row: span 2;
+            height: 280px;
+        }
         
         .portfolio-item:hover {
             transform: scale(1.03);
@@ -266,62 +271,24 @@
         .portfolio-item img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* تغییر از cover به contain */
-    background-color: #2a2a2a; /* اضافه کردن پس‌زمینه برای فضاهای خالی */
-    padding: 5px; /* فاصله داخلی برای عکس‌ها */
+            object-fit: contain; /* مهم: contain برای نمایش کامل عکس */
             display: block;
             transition: transform 0.5s ease;
+            padding: 5px; /* فاصله داخلی */
+            box-sizing: border-box;
         }
-
-
-        .portfolio-item.portrait {
-    height: 280px; /* برای عکس‌های پرتره (عمودی) */
-}
-
-.portfolio-item.landscape {
-    height: 200px; /* برای عکس‌های لنداسکیپ (افقی) */
-    grid-column: span 2; /* عکس‌های افقی دو ستون بگیرن */
-}
-        /* کنترل عرض برای انواع مختلف عکس */
-.portfolio-item.square {
-    grid-column: span 1;
-    height: 220px;
-}
-
-.portfolio-item.horizontal {
-    grid-column: span 2; /* عکس‌های افقی دو واحد عرض بگیرن */
-}
-
-.portfolio-item.vertical {
-    grid-column: span 1;
-    grid-row: span 2; /* عکس‌های عمودی دو واحد ارتفاع بگیرن */
-}
         
         .portfolio-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
-        /* سایزهای مختلف برای ایجاد طرح نامرتب */
-        .portfolio-item.wide {
-            grid-column: span 2;
-        }
-        
-        .portfolio-item.tall {
-            grid-row: span 2;
-        }
-        
-        .portfolio-item.large {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-        
-        /* برچسب نام فایل */
+        /* برچسب نام فایل (بدون jpg) */
         .file-label {
             position: absolute;
             bottom: 0;
             right: 0;
             left: 0;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             color: var(--accent-silver);
             padding: 8px;
             font-size: 0.75rem;
@@ -335,17 +302,73 @@
             transform: translateY(0);
         }
         
-        /* فوتور */
-        .resume-footer {
-            padding: 30px 40px;
-            background-color: #1a1a1a;
-            border-top: 1px solid #333;
-            text-align: center;
-            color: var(--text-gray);
-            font-size: 0.9rem;
+        /* تنظیمات موبایل */
+        @media (max-width: 768px) {
+            .resume-header, .resume-body, .portfolio-section {
+                padding: 25px;
+            }
+            
+            .name-title {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .dense-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                grid-gap: 1px;
+            }
+            
+            .portfolio-item {
+                height: 160px !important; /* ارتفاع ثابت برای همه در موبایل */
+            }
+            
+            .portfolio-item.small {
+                height: 140px;
+            }
+            
+            .portfolio-item.medium {
+                height: 170px;
+            }
+            
+            .portfolio-item.large {
+                height: 200px;
+            }
+            
+            .portfolio-item.xlarge {
+                height: 230px;
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            
+            .portfolio-item.wide {
+                grid-column: span 1;
+                height: 150px;
+            }
+            
+            .portfolio-item.tall {
+                grid-row: span 1;
+                height: 180px;
+            }
+            
+            /* برای عکس‌های کشیده در موبایل */
+            .portfolio-item.portrait-mobile {
+                height: 220px;
+            }
+            
+            .portfolio-item.landscape-mobile {
+                height: 150px;
+                grid-column: span 2;
+            }
+            
+            .portfolio-item img {
+                padding: 3px;
+                object-fit: contain; /* تضمین نمایش کامل عکس */
+            }
         }
         
-        /* ریسپانسیو */
         @media (max-width: 992px) {
             .resume-body {
                 grid-template-columns: 1fr;
@@ -375,34 +398,6 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .resume-header, .resume-body, .portfolio-section {
-                padding: 25px;
-            }
-            
-            .name-title {
-                font-size: 2rem;
-            }
-            
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-            
-            .dense-gallery {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-                grid-gap: 6px;
-            }
-            
-            .portfolio-item.wide,
-            .portfolio-item.large {
-                grid-column: span 1;
-            }
-            
-            .portfolio-item.tall {
-                grid-row: span 1;
-            }
-        }
-        
         /* دکمه‌های تزئینی */
         .color-accent {
             color: var(--accent-orange);
@@ -411,64 +406,6 @@
         .color-silver {
             color: var(--accent-silver);
         }
-        
-        /* پینترست استایل برای گالری */
-        .pinterest-grid {
-            column-count: 5;
-            column-gap: 8px;
-        }
-        
-        .pinterest-item {
-            break-inside: avoid;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        @media (max-width: 1200px) {
-            .pinterest-grid {
-                column-count: 4;
-            }
-        }
-        
-        @media (max-width: 900px) {
-            .pinterest-grid {
-                column-count: 3;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .pinterest-grid {
-                column-count: 2;
-            }
-        }
-
-        @media (max-width: 768px) {
-    /* ... کدهای قبلی ... */
-    
-    .portfolio-item {
-        height: 180px !important; /* ارتفاع ثابت برای موبایل */
-    }
-    
-    .portfolio-item.landscape {
-        grid-column: span 2; /* در موبایل هم عکس‌های افقی دو ستون بگیرن */
-        height: 160px !important;
-    }
-    
-    .portfolio-item.portrait {
-        height: 220px !important; /* عکس‌های عمودی بلندتر */
-    }
-    
-    .dense-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        grid-gap: 6px;
-    }
-    
-    .portfolio-item img {
-        padding: 3px; /* فاصله کمتر در موبایل */
-    }
-}
     </style>
 </head>
 <body>
@@ -567,253 +504,41 @@
             </div>
         </div>
         
-        <!-- بخش نمونه کارها - با عکس‌های واقعی -->
+        <!-- بخش نمونه کارها -->
         <section class="portfolio-section">
             <h2 class="portfolio-title">نمونه کارها</h2>
             
             <!-- دسته‌بندی لوگو -->
             <div class="portfolio-category">
                 <h3 class="category-title"><i class="fas fa-copyright"></i> طراحی لوگو</h3>
-                <div class="dense-gallery">
-                    <!-- لوگوهای 1 تا 12 -->
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو.jpg</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو2.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item wide">
-                        <img src="نمونه طراحی لوگو3.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item tall">
-                        <img src="نمونه طراحی لوگو4.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو5.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو6.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو7.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو8.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو9.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item wide">
-                        <img src="نمونه طراحی لوگو10.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو11.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو12.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    
-                    <!-- لوگوهای 13 تا 24 -->
-                    <div class="portfolio-item tall">
-                        <img src="نمونه طراحی لوگو13.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو14.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو15.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو16.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو17.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو17.jpg</div>
-                    </div>
-                    <div class="portfolio-item wide">
-                        <img src="نمونه طراحی لوگو18.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو18.jpg</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو19.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو20.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item tall">
-                        <img src="نمونه طراحی لوگو22.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو21.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو23.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو24.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    
-                    <!-- لوگوهای 25 تا 34 -->
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو25.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item wide">
-                        <img src="نمونه طراحی لوگو26.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو27.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو28.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو29.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو30.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item tall">
-                        <img src="نمونه طراحی لوگو31.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو32.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو33.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو34.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
+                <div class="dense-gallery" id="logo-gallery">
+                    <!-- عکس‌های لوگو اینجا لود می‌شن -->
                 </div>
             </div>
             
             <!-- دسته‌بندی پوستر و بسته‌بندی -->
             <div class="portfolio-category">
                 <h3 class="category-title"><i class="fas fa-images"></i> طراحی پوستر و بسته‌بندی</h3>
-                <div class="dense-gallery">
-                    <div class="portfolio-item wide">
-                        <img src="نمونه طراحی پوستر1.jpg" alt="طراحی پوستر">
-                        <div class="file-label">نمونه طراحی پوستر</div>
-                    </div>
-                    <div class="portfolio-item tall">
-                        <img src="نمونه طراحی پوستر2.jpg" alt="طراحی پوستر">
-                        <div class="file-label">نمونه طراحی پوستر</div>
-                    </div>
-                    <div class="portfolio-item large">
-                        <img src="نمونه طراحی مونوپرینت.jpg" alt="طراحی مونوپرینت">
-                        <div class="file-label">نمونه طراحی مونوپرینت</div>
-                    </div>
-                    <div class="portfolio-item wide">
-                        <img src="نمونه طرح بسته‌بندی.jpg" alt="طراحی بسته‌بندی">
-                        <div class="file-label">نمونه طرح بسته‌بندی</div>
-                    </div>
+                <div class="dense-gallery" id="poster-gallery">
+                    <!-- عکس‌های پوستر اینجا لود می‌شن -->
                 </div>
             </div>
             
             <!-- دسته‌بندی پست‌های اینستاگرام و تبلیغاتی -->
-<div class="portfolio-category">
-    <h3 class="category-title"><i class="fab fa-instagram"></i> پست‌های اینستاگرام و تبلیغاتی</h3>
-    <div class="dense-gallery">
-        <!-- عکس‌های عمودی (پرتره) -->
-        <div class="portfolio-item portrait">
-            <img src="نمونه طراحی اینستاگرام1.jpg" alt="طراحی اینستاگرام">
-            <div class="file-label">نمونه طراحی اینستاگرام</div>
-        </div>
-        <div class="portfolio-item portrait">
-            <img src="نمونه طراحی اینستاگرام3.jpg" alt="طراحی اینستاگرام">
-            <div class="file-label">نمونه طراحی اینستاگرام</div>
-        </div>
-        
-        <!-- پست‌های اسلایدی (افقی) -->
-        <div class="portfolio-item landscape">
-            <img src="نمونه پست اسلایدی تبلیغاتی .jpg" alt="پست اسلایدی تبلیغاتی">
-            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-        </div>
-        <div class="portfolio-item landscape">
-            <img src="نمونه پست اسلایدی تبلیغاتی2.jpg" alt="پست اسلایدی تبلیغاتی">
-            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-        </div>
-        <div class="portfolio-item landscape">
-            <img src="نمونه پست اسلایدی تبلیغاتی4.jpg" alt="پست اسلایدی تبلیغاتی">
-            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-        </div>
-        <div class="portfolio-item landscape">
-            <img src="نمونه پست اسلایدی تبلیغاتی5.jpg" alt="پست اسلایدی تبلیغاتی">
-            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-        </div>
-        <div class="portfolio-item landscape">
-            <img src="نمونه پست اسلایدی تبلیغاتی6.jpg" alt="پست اسلایدی تبلیغاتی">
-            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-        </div>
-        <div class="portfolio-item portrait">
-            <img src="نمونه پست اسلایدی تبلیغاتی7.jpg" alt="پست اسلایدی تبلیغاتی">
-            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-        </div>
-        <div class="portfolio-item portrait">
-            <img src="نمونه پست اسلایدی تبلیغاتی8.jpg" alt="پست اسلایدی تبلیغاتی">
-            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-        </div>
-    </div>
-</div>
+            <div class="portfolio-category">
+                <h3 class="category-title"><i class="fab fa-instagram"></i> پست‌های اینستاگرام و تبلیغاتی</h3>
+                <div class="dense-gallery" id="instagram-gallery">
+                    <!-- عکس‌های اینستاگرام اینجا لود می‌شن -->
+                </div>
+            </div>
             
             <!-- دسته‌بندی UI و سایر -->
-<div class="portfolio-category">
-    <h3 class="category-title"><i class="fas fa-desktop"></i> طراحی UI و سایر</h3>
-    <div class="dense-gallery">
-        <div class="portfolio-item landscape">
-            <img src="نمونه طراحی UI سایت.jpg" alt="طراحی UI سایت">
-            <div class="file-label">نمونه طراحی UI سایت</div>
-        </div>
-        <div class="portfolio-item landscape">
-            <img src="نمونه طراحی UI سایت3.jpg" alt="طراحی UI سایت">
-            <div class="file-label">نمونه طراحی UI سایت</div>
-        </div>
-        <div class="portfolio-item square">
-            <img src="نمونه طراحی آیکن.jpg" alt="طراحی آیکن">
-            <div class="file-label">نمونه طراحی آیکن</div>
-        </div>
-        <div class="portfolio-item landscape">
-            <img src="نمونه طراحی صفحات کاتالوگ.jpg" alt="طراحی صفحات کاتالوگ">
-            <div class="file-label">نمونه طراحی صفحات کاتالوگ</div>
-        </div>
-        <div class="portfolio-item portrait">
-            <img src="نمونه طراحی کارت و لوگو.jpg" alt="طراحی کارت و لوگو">
-            <div class="file-label">نمونه طراحی کارت و لوگو</div>
-        </div>
-    </div>
-</div>
+            <div class="portfolio-category">
+                <h3 class="category-title"><i class="fas fa-desktop"></i> طراحی UI و سایر</h3>
+                <div class="dense-gallery" id="ui-gallery">
+                    <!-- عکس‌های UI اینجا لود می‌شن -->
+                </div>
+            </div>
         </section>
         
         <!-- فوتر -->
@@ -824,9 +549,160 @@
     </div>
 
     <script>
-        // اسکریپت برای ایجاد انیمیشن‌های ساده
-        document.addEventListener('DOMContentLoaded', function() {
-            // انیمیشن برای آیتم‌های نمونه کارها هنگام اسکرول
+        // لیست عکس‌ها
+        const portfolioImages = {
+            logo: [
+                "نمونه طراحی لوگو.jpg",
+                "نمونه طراحی لوگو2.jpg",
+                "نمونه طراحی لوگو3.jpg",
+                "نمونه طراحی لوگو4.jpg",
+                "نمونه طراحی لوگو5.jpg",
+                "نمونه طراحی لوگو6.jpg",
+                "نمونه طراحی لوگو7.jpg",
+                "نمونه طراحی لوگو8.jpg",
+                "نمونه طراحی لوگو9.jpg",
+                "نمونه طراحی لوگو10.jpg",
+                "نمونه طراحی لوگو11.jpg",
+                "نمونه طراحی لوگو12.jpg",
+                "نمونه طراحی لوگو13.jpg",
+                "نمونه طراحی لوگو14.jpg",
+                "نمونه طراحی لوگو15.jpg",
+                "نمونه طراحی لوگو16.jpg",
+                "نمونه طراحی لوگو17.jpg",
+                "نمونه طراحی لوگو18.jpg",
+                "نمونه طراحی لوگو19.jpg",
+                "نمونه طراحی لوگو20.jpg",
+                "نمونه طراحی لوگو22.jpg",
+                "نمونه طراحی لوگو21.jpg",
+                "نمونه طراحی لوگو23.jpg",
+                "نمونه طراحی لوگو24.jpg",
+                "نمونه طراحی لوگو25.jpg",
+                "نمونه طراحی لوگو26.jpg",
+                "نمونه طراحی لوگو27.jpg",
+                "نمونه طراحی لوگو28.jpg",
+                "نمونه طراحی لوگو29.jpg",
+                "نمونه طراحی لوگو30.jpg",
+                "نمونه طراحی لوگو31.jpg",
+                "نمونه طراحی لوگو32.jpg",
+                "نمونه طراحی لوگو33.jpg",
+                "نمونه طراحی لوگو34.jpg"
+            ],
+            poster: [
+                "نمونه طراحی پوستر1.jpg",
+                "نمونه طراحی پوستر2.jpg",
+                "نمونه طراحی مونوپرینت.jpg",
+                "نمونه طرح بسته‌بندی.jpg"
+            ],
+            instagram: [
+                "نمونه طراحی اینستاگرام1.jpg",
+                "نمونه طراحی اینستاگرام3.jpg",
+                "نمونه پست اسلایدی تبلیغاتی .jpg",
+                "نمونه پست اسلایدی تبلیغاتی2.jpg",
+                "نمونه پست اسلایدی تبلیغاتی4.jpg",
+                "نمونه پست اسلایدی تبلیغاتی5.jpg",
+                "نمونه پست اسلایدی تبلیغاتی6.jpg",
+                "نمونه پست اسلایدی تبلیغاتی7.jpg",
+                "نمونه پست اسلایدی تبلیغاتی8.jpg"
+            ],
+            ui: [
+                "نمونه طراحی UI سایت.jpg",
+                "نمونه طراحی UI سایت3.jpg",
+                "نمونه طراحی آیکن.jpg",
+                "نمونه طراحی صفحات کاتالوگ.jpg",
+                "نمونه طراحی کارت و لوگو.jpg"
+            ]
+        };
+
+        // تابع برای حذف پسوند از نام فایل
+        function cleanFileName(filename) {
+            return filename
+                .replace('.jpg', '')
+                .replace('.jpeg', '')
+                .replace('.png', '')
+                .replace(/\s+\d+$/, '') // حذف اعداد انتهایی با فاصله
+                .trim();
+        }
+
+        // تابع برای ایجاد آیتم گالری
+        function createGalleryItem(imgSrc, isMobile = false) {
+            const item = document.createElement('div');
+            item.className = 'portfolio-item';
+            
+            const cleanName = cleanFileName(imgSrc);
+            
+            item.innerHTML = `
+                <img src="${imgSrc}" alt="${cleanName}" loading="lazy">
+                <div class="file-label">${cleanName}</div>
+            `;
+            
+            return item;
+        }
+
+        // تابع برای ایجاد گالری (ساده‌تر)
+        function createGallery(images, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            const isMobile = window.innerWidth <= 768;
+            
+            images.forEach((imgSrc) => {
+                const item = createGalleryItem(imgSrc, isMobile);
+                container.appendChild(item);
+            });
+            
+            // برای موبایل، کلاس‌های خاص اضافه کن
+            if (isMobile) {
+                const items = container.querySelectorAll('.portfolio-item');
+                items.forEach((item, index) => {
+                    // برای عکس‌های افقی در موبایل
+                    if (index % 4 === 0 || index % 4 === 2) {
+                        item.classList.add('landscape-mobile');
+                    } else {
+                        item.classList.add('portrait-mobile');
+                    }
+                });
+            }
+        }
+
+        // تابع چیدمان تصادفی بهبود یافته
+        function randomizeLayout() {
+            const items = document.querySelectorAll('.portfolio-item');
+            const sizeClasses = ['small', 'medium', 'large'];
+            
+            // اگر در موبایل هستیم، کار خاصی نکن
+            if (window.innerWidth <= 768) {
+                return;
+            }
+            
+            items.forEach(item => {
+                // حذف کلاس‌های اندازه قبلی
+                sizeClasses.forEach(cls => {
+                    item.classList.remove(cls);
+                });
+                
+                // حذف کلاس‌های خاص
+                ['xlarge', 'wide', 'tall'].forEach(cls => {
+                    item.classList.remove(cls);
+                });
+                
+                // انتخاب تصادفی اندازه اصلی
+                const randomSize = sizeClasses[Math.floor(Math.random() * sizeClasses.length)];
+                item.classList.add(randomSize);
+                
+                // شانس برای ویژگی‌های خاص
+                const rand = Math.random();
+                if (rand < 0.15) {
+                    item.classList.add('wide');
+                } else if (rand < 0.3) {
+                    item.classList.add('tall');
+                } else if (rand < 0.4) {
+                    item.classList.add('xlarge');
+                }
+            });
+        }
+
+        // تابع برای انیمیشن آیتم‌ها
+        function animateItems() {
             const portfolioItems = document.querySelectorAll('.portfolio-item');
             
             const observerOptions = {
@@ -849,8 +725,20 @@
                 item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
                 observer.observe(item);
             });
+        }
+
+        // تابع اصلی
+        function initPortfolio() {
+            // ایجاد گالری‌ها
+            createGallery(portfolioImages.logo, 'logo-gallery');
+            createGallery(portfolioImages.poster, 'poster-gallery');
+            createGallery(portfolioImages.instagram, 'instagram-gallery');
+            createGallery(portfolioImages.ui, 'ui-gallery');
             
-            // افزودن انیمیشن به کارت‌ها
+            // انیمیشن آیتم‌ها
+            animateItems();
+            
+            // انیمیشن کارت‌ها
             const infoCards = document.querySelectorAll('.info-card');
             infoCards.forEach((card, index) => {
                 card.style.opacity = '0';
@@ -863,34 +751,27 @@
                 }, 300 + (index * 100));
             });
             
-            // تصادفی کردن سایز آیتم‌ها برای ظاهر نامرتب
-            function randomizeItems() {
-                const items = document.querySelectorAll('.portfolio-item');
-                const sizeClasses = ['', 'wide', 'tall', 'large'];
-                
-                items.forEach(item => {
-                    // حذف کلاس‌های سایز قبلی
-                    sizeClasses.forEach(cls => {
-                        if (cls) item.classList.remove(cls);
-                    });
-                    
-                    // اضافه کردن سایز تصادفی به 30% از آیتم‌ها
-                    if (Math.random() < 0.3) {
-                        const randomSize = sizeClasses[Math.floor(Math.random() * sizeClasses.length)];
-                        if (randomSize) {
-                            item.classList.add(randomSize);
-                        }
-                    }
-                });
+            // اجرای چیدمان تصادفی فقط در دسکتاپ
+            if (window.innerWidth > 768) {
+                setTimeout(() => {
+                    randomizeLayout();
+                }, 500);
             }
-            
-            // اجرای تابع تصادفی‌سازی بعد از لود صفحه
-            setTimeout(randomizeItems, 500);
+        }
+
+        // ریسپانسیو کردن هنگام تغییر سایز
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (window.innerWidth > 768) {
+                    randomizeLayout();
+                }
+            }, 250);
         });
+
+        // اجرا بعد از لود صفحه
+        document.addEventListener('DOMContentLoaded', initPortfolio);
     </script>
 </body>
-
 </html>
-
-
-
