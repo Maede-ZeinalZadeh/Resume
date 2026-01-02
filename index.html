@@ -230,9 +230,31 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            aspect-ratio: 1; /* نسبت مربعی برای همه عکس‌ها */
             border: 1px solid #333;
         }
+
+        .portfolio-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    height: 200px; /* ارتفاع ثابت برای همه */
+    border: 1px solid #333;
+}
+
+/* ارتفاع‌های مختلف برای آیتم‌های مختلف */
+.portfolio-item.vertical {
+    height: 300px; /* برای عکس‌های عمودی/کشیده */
+}
+
+.portfolio-item.horizontal {
+    height: 180px; /* برای عکس‌های افقی */
+}
+
+.portfolio-item.square {
+    height: 200px; /* برای عکس‌های مربعی */
+}
         
         .portfolio-item:hover {
             transform: scale(1.03);
@@ -248,6 +270,20 @@
             display: block;
             transition: transform 0.5s ease;
         }
+
+        /* کنترل عرض برای انواع مختلف عکس */
+.portfolio-item.square {
+    grid-column: span 1;
+}
+
+.portfolio-item.horizontal {
+    grid-column: span 2; /* عکس‌های افقی دو واحد عرض بگیرن */
+}
+
+.portfolio-item.vertical {
+    grid-column: span 1;
+    grid-row: span 2; /* عکس‌های عمودی دو واحد ارتفاع بگیرن */
+}
         
         .portfolio-item:hover img {
             transform: scale(1.1);
@@ -672,40 +708,36 @@
             <div class="portfolio-category">
                 <h3 class="category-title"><i class="fab fa-instagram"></i> پست‌های اینستاگرام و تبلیغاتی</h3>
                 <div class="dense-gallery">
-                    <div class="portfolio-item tall">
+                    <div class="portfolio-item tall vertical">
                         <img src="نمونه طراحی اینستاگرام1.jpg" alt="طراحی اینستاگرام">
                         <div class="file-label">نمونه طراحی اینستاگرام</div>
                     </div>
-                    <div class="portfolio-item">
+                    <div class="portfolio-item vertical horizontal">
                         <img src="نمونه طراحی اینستاگرام3.jpg" alt="طراحی اینستاگرام">
                         <div class="file-label">نمونه طراحی اینستاگرام</div>
                     </div>
-                    <div class="portfolio-item large">
+                    <div class="portfolio-item large horizontal">
                         <img src="نمونه پست اسلایدی تبلیغاتی .jpg" alt="پست اسلایدی تبلیغاتی">
                         <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
                     </div>
-                    <div class="portfolio-item wide">
+                    <div class="portfolio-item wide horizontal">
                         <img src="نمونه پست اسلایدی تبلیغاتی2.jpg" alt="پست اسلایدی تبلیغاتی">
                         <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
                     </div>
-                    <div class="portfolio-item">
+                    <div class="portfolio-item horizontal">
                         <img src="نمونه پست اسلایدی تبلیغاتی4.jpg" alt="پست اسلایدی تبلیغاتی">
                         <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
                     </div>
-                    <div class="portfolio-item">
+                    <div class="portfolio-item horizontal">
                         <img src="نمونه پست اسلایدی تبلیغاتی5.jpg" alt="پست اسلایدی تبلیغاتی">
                         <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
                     </div>
-                    <div class="portfolio-item wide">
+                    <div class="portfolio-item wide horizontal">
                         <img src="نمونه پست اسلایدی تبلیغاتی6.jpg" alt="پست اسلایدی تبلیغاتی">
                         <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
                     </div>
-                    <div class="portfolio-item tall">
+                    <div class="portfolio-item tall horizontal">
                         <img src="نمونه پست اسلایدی تبلیغاتی7.jpg" alt="پست اسلایدی تبلیغاتی">
-                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه پست اسلایدی تبلیغاتی8.jpg" alt="پست اسلایدی تبلیغاتی">
                         <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
                     </div>
                 </div>
@@ -715,11 +747,11 @@
             <div class="portfolio-category">
                 <h3 class="category-title"><i class="fas fa-desktop"></i> طراحی UI و سایر</h3>
                 <div class="dense-gallery">
-                    <div class="portfolio-item large">
+                    <div class="portfolio-item large horizontal">
                         <img src="نمونه طراحی UI سایت.jpg" alt="طراحی UI سایت">
                         <div class="file-label">نمونه طراحی UI سایت</div>
                     </div>
-                    <div class="portfolio-item wide">
+                    <div class="portfolio-item wide vertical">
                         <img src="نمونه طراحی UI سایت3.jpg" alt="طراحی UI سایت">
                         <div class="file-label">نمونه طراحی UI سایت</div>
                     </div>
@@ -731,7 +763,7 @@
                         <img src="نمونه طراحی صفحات کاتالوگ.jpg" alt="طراحی صفحات کاتالوگ">
                         <div class="file-label">نمونه طراحی صفحات کاتالوگ</div>
                     </div>
-                    <div class="portfolio-item">
+                    <div class="portfolio-item horizontal">
                         <img src="نمونه طراحی کارت و لوگو.jpg" alt="طراحی کارت و لوگو">
                         <div class="file-label">نمونه طراحی کارت و لوگو</div>
                     </div>
