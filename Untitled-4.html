@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزومه مائده زینل زاده - طراح گرافیک</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        :root {
+            --primary-dark: #121212;
+            --secondary-dark: #1e1e1e;
+            --accent-silver: #c0c0c0;
+            --accent-orange: #ff6b35;
+            --text-light: #f0f0f0;
+            --text-gray: #aaaaaa;
+            --card-bg: #252525;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #2a2a2a 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .resume-container {
+            background-color: var(--secondary-dark);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid #333;
+        }
+        
+        /* هدر رزومه */
+        .resume-header {
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-bottom: 2px solid var(--accent-orange);
+            position: relative;
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-silver);
+            box-shadow: 0 0 25px rgba(255, 107, 53, 0.3);
+            margin-left: 40px;
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        .name-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--accent-silver);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .name-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-orange);
+            border-radius: 2px;
+        }
+        
+        .title {
+            font-size: 1.4rem;
+            color: var(--accent-orange);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            color: var(--text-gray);
+        }
+        
+        .contact-item i {
+            color: var(--accent-orange);
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* بخش اصلی */
+        .resume-body {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-silver);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 70px;
+            height: 2px;
+            background-color: var(--accent-orange);
+        }
+        
+        /* بخش متن‌های چند ستونی */
+        .multi-column-text {
+            column-count: 2;
+            column-gap: 30px;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+        
+        .multi-column-text p {
+            margin-bottom: 15px;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+        
+        /* کارت‌های اطلاعات */
+        .info-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-right: 4px solid var(--accent-orange);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .info-card h3 {
+            color: var(--accent-silver);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        /* بخش نمونه کارها - تغییرات اصلی اینجاست */
+        .portfolio-section {
+            padding: 40px;
+            background-color: #1a1a1a;
+            border-top: 2px solid #333;
+        }
+        
+        .portfolio-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--accent-silver);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .portfolio-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 150px;
+            height: 3px;
+            background-color: var(--accent-orange);
+        }
+        
+        /* دسته‌بندی نمونه کارها */
+        .portfolio-category {
+            margin-bottom: 50px;
+        }
+        
+        .category-title {
+            font-size: 1.4rem;
+            color: var(--accent-orange);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #444;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-title i {
+            margin-left: 10px;
+            font-size: 1.3rem;
+        }
+        
+        /* گالری متراکم برای عکس‌ها - تغییرات اصلی اینجاست */
+        .dense-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-gap: 8px; /* فاصله کم بین عکس‌ها */
+            grid-auto-flow: dense;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            aspect-ratio: 1; /* نسبت مربعی برای همه عکس‌ها */
+            border: 1px solid #333;
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+            border-color: var(--accent-orange);
+            z-index: 10;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* سایزهای مختلف برای ایجاد طرح نامرتب */
+        .portfolio-item.wide {
+            grid-column: span 2;
+        }
+        
+        .portfolio-item.tall {
+            grid-row: span 2;
+        }
+        
+        .portfolio-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        
+        /* برچسب نام فایل */
+        .file-label {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.85);
+            color: var(--accent-silver);
+            padding: 8px;
+            font-size: 0.75rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .portfolio-item:hover .file-label {
+            transform: translateY(0);
+        }
+        
+        /* فوتور */
+        .resume-footer {
+            padding: 30px 40px;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* ریسپانسیو */
+        @media (max-width: 992px) {
+            .resume-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .multi-column-text {
+                column-count: 1;
+            }
+            
+            .resume-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-image {
+                margin-left: 0;
+                margin-bottom: 30px;
+            }
+            
+            .name-title::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+            
+            .dense-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .resume-header, .resume-body, .portfolio-section {
+                padding: 25px;
+            }
+            
+            .name-title {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .dense-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                grid-gap: 6px;
+            }
+            
+            .portfolio-item.wide,
+            .portfolio-item.large {
+                grid-column: span 1;
+            }
+            
+            .portfolio-item.tall {
+                grid-row: span 1;
+            }
+        }
+        
+        /* دکمه‌های تزئینی */
+        .color-accent {
+            color: var(--accent-orange);
+        }
+        
+        .color-silver {
+            color: var(--accent-silver);
+        }
+        
+        /* پینترست استایل برای گالری */
+        .pinterest-grid {
+            column-count: 5;
+            column-gap: 8px;
+        }
+        
+        .pinterest-item {
+            break-inside: avoid;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        @media (max-width: 1200px) {
+            .pinterest-grid {
+                column-count: 4;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .pinterest-grid {
+                column-count: 3;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .pinterest-grid {
+                column-count: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- هدر رزومه -->
+        <header class="resume-header">
+            <img src="پروفایل.jpg" alt="پروفایل مائده زینل زاده" class="profile-image">
+            <div class="header-content">
+                <h1 class="name-title">مائده زینل زاده</h1>
+                <p class="title">طراح گرافیک و گرافیست حرفه‌ای</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>فارغ‌التحصیل کارشناسی ارشد هنرهای زیبا دانشگاه تهران</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>متولد شیراز - ۱۳۷۴/۴/۱۳</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>maedezzade@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>۰۹۲۲۶۱۲۳۵۷۴</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- بخش اصلی رزومه -->
+        <div class="resume-body">
+            <!-- ستون سمت راست (عریض) -->
+            <div class="main-column">
+                <div class="info-card">
+                    <h3><i class="fas fa-award color-accent"></i> جوایز و افتخارات</h3>
+                    <div class="multi-column-text">
+                        <p>اثر برگزیده پوستر فراخوان کشوری بزرگداشت امام رضا(ع) از طرف سازمان زیبا سازی شهر تهران - سال ۱۴۰۰</p>
+                        <p>اثر برگزیده پوستر فراخوان کشوری بزرگداشت شاهچراغ (ع) از طرف سازمان زیبا سازی شهر تهران</p>
+                        <p>اثر برگزیده پوستر فراخوان کشوری کارگاه کشوری طراحی گرافیک با موضوع روز پدر و مادر - سال ۱۳۹۸</p>
+                        <p>کسب مقام تقدیری هنرواره طراحی پوستر نماز با عنوان "به سوی خدا"</p>
+                        <p>اثر برگزیده مسابقه مبارزه با کرونا با موضوع طراحی پوستر</p>
+                        <p>کسب مقام اول مسابقه هنر بوم بخش طراحی پوستر</p>
+                        <p>کسب مقام دوم استانی طراحی مسابقات طراحی و نقاشی</p>
+                        <p>اثر برگزیده پوستر فراخوان کشوری هفته کتاب و کتابخوانی از طرف سازمان زیباسازی تهران - سال ۱۴۰۰</p>
+                        <p>اثر برگزیده پوستر فراخوان کشوری با موضوع اربعین حسینی و هفته دفاع مقدس از طرف سازمان زیباسازی</p>
+                        <p>اثر برگزیده پوستر فراخوان کشوری با موضوع محرم از طرف سازمان زیبا سازی تهران - سال ۱۴۰۰</p>
+                        <p>اثر برگزیده فراخوان کشوری طراحی پوستر با محوریت نماز جمعه (تهران)</p>
+                        <p>اثر برگزیده پوستر فراخوان کشوری به مناسبت دهه ولایت از طرف سازمان زیباسازی شهر تهران - سال ۱۴۰۰</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-briefcase color-accent"></i> سوابق کاری</h3>
+                    <div class="multi-column-text">
+                        <p>طراح و گرافیست کانون تبلیغات صبح آگهی (تهران) به مدت دو سال با سابقه بیمه</p>
+                        <p>منشی و طراح و بازاریاب شرکت صدیق صنعت پاسارگاد (تهران) ۴ ماه</p>
+                        <p>گرافیست و طراح کانون تبلیغات بارنا (شیراز) ۳ ماه</p>
+                        <p>گرافیست کانون تبلیغات شناسا (شیراز) ۳ ماه</p>
+                        <p>طراح و گرافیست کانون تبلیغات (شیراز) یک ماه</p>
+                        <p>گرافیست شرکت یگانه نواوران پویا (تهران) به مدت ۵ ماه</p>
+                        <p>طراح تبلیغات احمدی (شیراز) به مدت ۶ ماه</p>
+                        <p>بازاریاب تلفنی بیمه پاسارگاد (تهران) به مدت ۴ ماه</p>
+                        <p>منشی و مسئول بیمه ملت (شیراز) به مدت سه ماه</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ستون سمت چپ (باریک) -->
+            <div class="side-column">
+                <div class="info-card">
+                    <h3><i class="fas fa-graduation-cap color-accent"></i> تحصیلات</h3>
+                    <p>فارغ‌التحصیل کارشناسی ارشد هنرهای زیبا دانشگاه تهران</p>
+                    <p>دانشجوی کارشناسی دانشکده دکتر شریعتی تهران</p>
+                    <p>دانشجوی کاردانی دانشکده دختران شیراز</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-palette color-accent"></i> نمایشگاه‌ها</h3>
+                    <p>شرکت در نمایشگاه گروهی با موضوع اسماءالحسنی در مقطع کارشناسی در تهران - سال ۱۳۹۶</p>
+                    <p>شرکت در نمایشگاه گروهی هفته تصویرسازی هنرهای زیبا - سال ۱۳۹۹</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-star color-accent"></i> مهارت‌ها</h3>
+                    <p>طراحی گرافیک</p>
+                    <p>طراحی لوگو و هویت بصری</p>
+                    <p>طراحی پوستر</p>
+                    <p>طراحی UI/UX</p>
+                    <p>طراحی کاتالوگ و بروشور</p>
+                    <p>طراحی بسته‌بندی</p>
+                    <p>طراحی برای شبکه‌های اجتماعی</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بخش نمونه کارها - با عکس‌های واقعی -->
+        <section class="portfolio-section">
+            <h2 class="portfolio-title">نمونه کارها</h2>
+            
+            <!-- دسته‌بندی لوگو -->
+            <div class="portfolio-category">
+                <h3 class="category-title"><i class="fas fa-copyright"></i> طراحی لوگو</h3>
+                <div class="dense-gallery">
+                    <!-- لوگوهای 1 تا 12 -->
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو2.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو2.jpg</div>
+                    </div>
+                    <div class="portfolio-item wide">
+                        <img src="نمونه طراحی لوگو3.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو3.jpg</div>
+                    </div>
+                    <div class="portfolio-item tall">
+                        <img src="نمونه طراحی لوگو4.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو4.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو5.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو5.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو6.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو6.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو7.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو7.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو8.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو8.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو9.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو9.jpg</div>
+                    </div>
+                    <div class="portfolio-item wide">
+                        <img src="نمونه طراحی لوگو10.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو10.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو11.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو11.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو12.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو12.jpg</div>
+                    </div>
+                    
+                    <!-- لوگوهای 13 تا 24 -->
+                    <div class="portfolio-item tall">
+                        <img src="نمونه طراحی لوگو13.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو13.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو14.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو14.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو15.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو15.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو16.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو16.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو17.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو17.jpg</div>
+                    </div>
+                    <div class="portfolio-item wide">
+                        <img src="نمونه طراحی لوگو18.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو18.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو19.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو19.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو20.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو20.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو21.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو21.jpg</div>
+                    </div>
+                    <div class="portfolio-item tall">
+                        <img src="نمونه طراحی لوگو22.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو22.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو23.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو23.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو24.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو24.jpg</div>
+                    </div>
+                    
+                    <!-- لوگوهای 25 تا 34 -->
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو25.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو25.jpg</div>
+                    </div>
+                    <div class="portfolio-item wide">
+                        <img src="نمونه طراحی لوگو26.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو26.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو27.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو27.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو28.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو28.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو29.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو29.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو30.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو30.jpg</div>
+                    </div>
+                    <div class="portfolio-item tall">
+                        <img src="نمونه طراحی لوگو31.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو31.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو32.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو32.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو33.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو33.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو34.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو34.jpg</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- دسته‌بندی پوستر و بسته‌بندی -->
+            <div class="portfolio-category">
+                <h3 class="category-title"><i class="fas fa-images"></i> طراحی پوستر و بسته‌بندی</h3>
+                <div class="dense-gallery">
+                    <div class="portfolio-item wide">
+                        <img src="نمونه طراحی پوستر1.jpg" alt="طراحی پوستر">
+                        <div class="file-label">نمونه طراحی پوستر1.jpg</div>
+                    </div>
+                    <div class="portfolio-item tall">
+                        <img src="نمونه طراحی پوستر2.jpg" alt="طراحی پوستر">
+                        <div class="file-label">نمونه طراحی پوستر2.jpg</div>
+                    </div>
+                    <div class="portfolio-item large">
+                        <img src="نمونه طراحی مونوپرینت.jpg" alt="طراحی مونوپرینت">
+                        <div class="file-label">نمونه طراحی مونوپرینت.jpg</div>
+                    </div>
+                    <div class="portfolio-item wide">
+                        <img src="نمونه طرح بسته‌بندی.jpg" alt="طراحی بسته‌بندی">
+                        <div class="file-label">نمونه طرح بسته‌بندی.jpg</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- دسته‌بندی پست‌های اینستاگرام و تبلیغاتی -->
+            <div class="portfolio-category">
+                <h3 class="category-title"><i class="fab fa-instagram"></i> پست‌های اینستاگرام و تبلیغاتی</h3>
+                <div class="dense-gallery">
+                    <div class="portfolio-item tall">
+                        <img src="نمونه طراحی اینستاگرام1.jpg" alt="طراحی اینستاگرام">
+                        <div class="file-label">نمونه طراحی اینستاگرام1.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی اینستاگرام3.jpg" alt="طراحی اینستاگرام">
+                        <div class="file-label">نمونه طراحی اینستاگرام3.jpg</div>
+                    </div>
+                    <div class="portfolio-item large">
+                        <img src="نمونه پست اسلایدی تبلیغاتی .jpg" alt="پست اسلایدی تبلیغاتی">
+                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی.jpg</div>
+                    </div>
+                    <div class="portfolio-item wide">
+                        <img src="نمونه پست اسلایدی تبلیغاتی2.jpg" alt="پست اسلایدی تبلیغاتی">
+                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی2.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه پست اسلایدی تبلیغاتی4.jpg" alt="پست اسلایدی تبلیغاتی">
+                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی4.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه پست اسلایدی تبلیغاتی5.jpg" alt="پست اسلایدی تبلیغاتی">
+                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی5.jpg</div>
+                    </div>
+                    <div class="portfolio-item wide">
+                        <img src="نمونه پست اسلایدی تبلیغاتی6.jpg" alt="پست اسلایدی تبلیغاتی">
+                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی6.jpg</div>
+                    </div>
+                    <div class="portfolio-item tall">
+                        <img src="نمونه پست اسلایدی تبلیغاتی7.jpg" alt="پست اسلایدی تبلیغاتی">
+                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی7.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه پست اسلایدی تبلیغاتی8.jpg" alt="پست اسلایدی تبلیغاتی">
+                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی8.jpg</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- دسته‌بندی UI و سایر -->
+            <div class="portfolio-category">
+                <h3 class="category-title"><i class="fas fa-desktop"></i> طراحی UI و سایر</h3>
+                <div class="dense-gallery">
+                    <div class="portfolio-item large">
+                        <img src="نمونه طراحی UI سایت.jpg" alt="طراحی UI سایت">
+                        <div class="file-label">نمونه طراحی UI سایت.jpg</div>
+                    </div>
+                    <div class="portfolio-item wide">
+                        <img src="نمونه طراحی UI سایت3.jpg" alt="طراحی UI سایت">
+                        <div class="file-label">نمونه طراحی UI سایت3.jpg</div>
+                    </div>
+                    <div class="portfolio-item tall">
+                        <img src="نمونه طراحی آیکن.jpg" alt="طراحی آیکن">
+                        <div class="file-label">نمونه طراحی آیکن.jpg</div>
+                    </div>
+                    <div class="portfolio-item wide">
+                        <img src="نمونه طراحی صفحات کاتالوگ.jpg" alt="طراحی صفحات کاتالوگ">
+                        <div class="file-label">نمونه طراحی صفحات کاتالوگ.jpg</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی کارت و لوگو.jpg" alt="طراحی کارت و لوگو">
+                        <div class="file-label">نمونه طراحی کارت و لوگو.jpg</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- فوتر -->
+        <footer class="resume-footer">
+            <p>طراحی شده با <span class="color-accent">♥</span> | مائده زینل زاده - طراح گرافیک حرفه‌ای</p>
+            <p>تمامی حقوق محفوظ است - ۱۴۰۳</p>
+        </footer>
+    </div>
+
+    <script>
+        // اسکریپت برای ایجاد انیمیشن‌های ساده
+        document.addEventListener('DOMContentLoaded', function() {
+            // انیمیشن برای آیتم‌های نمونه کارها هنگام اسکرول
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            portfolioItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+            
+            // افزودن انیمیشن به کارت‌ها
+            const infoCards = document.querySelectorAll('.info-card');
+            infoCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300 + (index * 100));
+            });
+            
+            // تصادفی کردن سایز آیتم‌ها برای ظاهر نامرتب
+            function randomizeItems() {
+                const items = document.querySelectorAll('.portfolio-item');
+                const sizeClasses = ['', 'wide', 'tall', 'large'];
+                
+                items.forEach(item => {
+                    // حذف کلاس‌های سایز قبلی
+                    sizeClasses.forEach(cls => {
+                        if (cls) item.classList.remove(cls);
+                    });
+                    
+                    // اضافه کردن سایز تصادفی به 30% از آیتم‌ها
+                    if (Math.random() < 0.3) {
+                        const randomSize = sizeClasses[Math.floor(Math.random() * sizeClasses.length)];
+                        if (randomSize) {
+                            item.classList.add(randomSize);
+                        }
+                    }
+                });
+            }
+            
+            // اجرای تابع تصادفی‌سازی بعد از لود صفحه
+            setTimeout(randomizeItems, 500);
+        });
+    </script>
+</body>
+</html>
