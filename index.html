@@ -266,14 +266,26 @@
         .portfolio-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* تغییر از cover به contain */
+    background-color: #2a2a2a; /* اضافه کردن پس‌زمینه برای فضاهای خالی */
+    padding: 5px; /* فاصله داخلی برای عکس‌ها */
             display: block;
             transition: transform 0.5s ease;
         }
 
+
+        .portfolio-item.portrait {
+    height: 280px; /* برای عکس‌های پرتره (عمودی) */
+}
+
+.portfolio-item.landscape {
+    height: 200px; /* برای عکس‌های لنداسکیپ (افقی) */
+    grid-column: span 2; /* عکس‌های افقی دو ستون بگیرن */
+}
         /* کنترل عرض برای انواع مختلف عکس */
 .portfolio-item.square {
     grid-column: span 1;
+    height: 220px;
 }
 
 .portfolio-item.horizontal {
@@ -431,6 +443,32 @@
                 column-count: 2;
             }
         }
+
+        @media (max-width: 768px) {
+    /* ... کدهای قبلی ... */
+    
+    .portfolio-item {
+        height: 180px !important; /* ارتفاع ثابت برای موبایل */
+    }
+    
+    .portfolio-item.landscape {
+        grid-column: span 2; /* در موبایل هم عکس‌های افقی دو ستون بگیرن */
+        height: 160px !important;
+    }
+    
+    .portfolio-item.portrait {
+        height: 220px !important; /* عکس‌های عمودی بلندتر */
+    }
+    
+    .dense-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-gap: 6px;
+    }
+    
+    .portfolio-item img {
+        padding: 3px; /* فاصله کمتر در موبایل */
+    }
+}
     </style>
 </head>
 <body>
@@ -620,12 +658,12 @@
                         <img src="نمونه طراحی لوگو20.jpg" alt="طراحی لوگو">
                         <div class="file-label">نمونه طراحی لوگو</div>
                     </div>
-                    <div class="portfolio-item">
-                        <img src="نمونه طراحی لوگو21.jpg" alt="طراحی لوگو">
-                        <div class="file-label">نمونه طراحی لوگو</div>
-                    </div>
                     <div class="portfolio-item tall">
                         <img src="نمونه طراحی لوگو22.jpg" alt="طراحی لوگو">
+                        <div class="file-label">نمونه طراحی لوگو</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="نمونه طراحی لوگو21.jpg" alt="طراحی لوگو">
                         <div class="file-label">نمونه طراحی لوگو</div>
                     </div>
                     <div class="portfolio-item">
@@ -705,70 +743,77 @@
             </div>
             
             <!-- دسته‌بندی پست‌های اینستاگرام و تبلیغاتی -->
-            <div class="portfolio-category">
-                <h3 class="category-title"><i class="fab fa-instagram"></i> پست‌های اینستاگرام و تبلیغاتی</h3>
-                <div class="dense-gallery">
-                    <div class="portfolio-item tall vertical">
-                        <img src="نمونه طراحی اینستاگرام1.jpg" alt="طراحی اینستاگرام">
-                        <div class="file-label">نمونه طراحی اینستاگرام</div>
-                    </div>
-                    <div class="portfolio-item vertical horizontal">
-                        <img src="نمونه طراحی اینستاگرام3.jpg" alt="طراحی اینستاگرام">
-                        <div class="file-label">نمونه طراحی اینستاگرام</div>
-                    </div>
-                    <div class="portfolio-item large horizontal">
-                        <img src="نمونه پست اسلایدی تبلیغاتی .jpg" alt="پست اسلایدی تبلیغاتی">
-                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-                    </div>
-                    <div class="portfolio-item wide horizontal">
-                        <img src="نمونه پست اسلایدی تبلیغاتی2.jpg" alt="پست اسلایدی تبلیغاتی">
-                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-                    </div>
-                    <div class="portfolio-item horizontal">
-                        <img src="نمونه پست اسلایدی تبلیغاتی4.jpg" alt="پست اسلایدی تبلیغاتی">
-                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-                    </div>
-                    <div class="portfolio-item horizontal">
-                        <img src="نمونه پست اسلایدی تبلیغاتی5.jpg" alt="پست اسلایدی تبلیغاتی">
-                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-                    </div>
-                    <div class="portfolio-item wide horizontal">
-                        <img src="نمونه پست اسلایدی تبلیغاتی6.jpg" alt="پست اسلایدی تبلیغاتی">
-                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-                    </div>
-                    <div class="portfolio-item tall horizontal">
-                        <img src="نمونه پست اسلایدی تبلیغاتی7.jpg" alt="پست اسلایدی تبلیغاتی">
-                        <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
-                    </div>
-                </div>
-            </div>
+<div class="portfolio-category">
+    <h3 class="category-title"><i class="fab fa-instagram"></i> پست‌های اینستاگرام و تبلیغاتی</h3>
+    <div class="dense-gallery">
+        <!-- عکس‌های عمودی (پرتره) -->
+        <div class="portfolio-item portrait">
+            <img src="نمونه طراحی اینستاگرام1.jpg" alt="طراحی اینستاگرام">
+            <div class="file-label">نمونه طراحی اینستاگرام</div>
+        </div>
+        <div class="portfolio-item portrait">
+            <img src="نمونه طراحی اینستاگرام3.jpg" alt="طراحی اینستاگرام">
+            <div class="file-label">نمونه طراحی اینستاگرام</div>
+        </div>
+        
+        <!-- پست‌های اسلایدی (افقی) -->
+        <div class="portfolio-item landscape">
+            <img src="نمونه پست اسلایدی تبلیغاتی .jpg" alt="پست اسلایدی تبلیغاتی">
+            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
+        </div>
+        <div class="portfolio-item landscape">
+            <img src="نمونه پست اسلایدی تبلیغاتی2.jpg" alt="پست اسلایدی تبلیغاتی">
+            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
+        </div>
+        <div class="portfolio-item landscape">
+            <img src="نمونه پست اسلایدی تبلیغاتی4.jpg" alt="پست اسلایدی تبلیغاتی">
+            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
+        </div>
+        <div class="portfolio-item landscape">
+            <img src="نمونه پست اسلایدی تبلیغاتی5.jpg" alt="پست اسلایدی تبلیغاتی">
+            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
+        </div>
+        <div class="portfolio-item landscape">
+            <img src="نمونه پست اسلایدی تبلیغاتی6.jpg" alt="پست اسلایدی تبلیغاتی">
+            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
+        </div>
+        <div class="portfolio-item portrait">
+            <img src="نمونه پست اسلایدی تبلیغاتی7.jpg" alt="پست اسلایدی تبلیغاتی">
+            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
+        </div>
+        <div class="portfolio-item portrait">
+            <img src="نمونه پست اسلایدی تبلیغاتی8.jpg" alt="پست اسلایدی تبلیغاتی">
+            <div class="file-label">نمونه پست اسلایدی تبلیغاتی</div>
+        </div>
+    </div>
+</div>
             
             <!-- دسته‌بندی UI و سایر -->
-            <div class="portfolio-category">
-                <h3 class="category-title"><i class="fas fa-desktop"></i> طراحی UI و سایر</h3>
-                <div class="dense-gallery">
-                    <div class="portfolio-item large horizontal">
-                        <img src="نمونه طراحی UI سایت.jpg" alt="طراحی UI سایت">
-                        <div class="file-label">نمونه طراحی UI سایت</div>
-                    </div>
-                    <div class="portfolio-item wide vertical">
-                        <img src="نمونه طراحی UI سایت3.jpg" alt="طراحی UI سایت">
-                        <div class="file-label">نمونه طراحی UI سایت</div>
-                    </div>
-                    <div class="portfolio-item tall">
-                        <img src="نمونه طراحی آیکن.jpg" alt="طراحی آیکن">
-                        <div class="file-label">نمونه طراحی آیکن</div>
-                    </div>
-                    <div class="portfolio-item wide">
-                        <img src="نمونه طراحی صفحات کاتالوگ.jpg" alt="طراحی صفحات کاتالوگ">
-                        <div class="file-label">نمونه طراحی صفحات کاتالوگ</div>
-                    </div>
-                    <div class="portfolio-item horizontal">
-                        <img src="نمونه طراحی کارت و لوگو.jpg" alt="طراحی کارت و لوگو">
-                        <div class="file-label">نمونه طراحی کارت و لوگو</div>
-                    </div>
-                </div>
-            </div>
+<div class="portfolio-category">
+    <h3 class="category-title"><i class="fas fa-desktop"></i> طراحی UI و سایر</h3>
+    <div class="dense-gallery">
+        <div class="portfolio-item landscape">
+            <img src="نمونه طراحی UI سایت.jpg" alt="طراحی UI سایت">
+            <div class="file-label">نمونه طراحی UI سایت</div>
+        </div>
+        <div class="portfolio-item landscape">
+            <img src="نمونه طراحی UI سایت3.jpg" alt="طراحی UI سایت">
+            <div class="file-label">نمونه طراحی UI سایت</div>
+        </div>
+        <div class="portfolio-item square">
+            <img src="نمونه طراحی آیکن.jpg" alt="طراحی آیکن">
+            <div class="file-label">نمونه طراحی آیکن</div>
+        </div>
+        <div class="portfolio-item landscape">
+            <img src="نمونه طراحی صفحات کاتالوگ.jpg" alt="طراحی صفحات کاتالوگ">
+            <div class="file-label">نمونه طراحی صفحات کاتالوگ</div>
+        </div>
+        <div class="portfolio-item portrait">
+            <img src="نمونه طراحی کارت و لوگو.jpg" alt="طراحی کارت و لوگو">
+            <div class="file-label">نمونه طراحی کارت و لوگو</div>
+        </div>
+    </div>
+</div>
         </section>
         
         <!-- فوتر -->
